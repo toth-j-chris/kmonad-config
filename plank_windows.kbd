@@ -52,7 +52,7 @@
  
 (deflayer navigation
   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX  
-  XX   XX   XX   XX   XX   XX   XX   tab  esc  bspc ret  XX   XX   XX
+  XX   XX   XX   tab  XX   XX   XX   tab  esc  bspc ret  XX   XX   XX
   XX   lctl lalt lsft lmet XX   left down up   rght @atb XX   XX 
   XX   XX   XX   XX   XX   XX   home pgdn pgup end  XX   XX  
   XX   XX   XX             XX             XX   XX   XX       
