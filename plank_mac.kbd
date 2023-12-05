@@ -1,0 +1,99 @@
+(defcfg
+  input (iokit-name)
+  output (kext)
+
+  fallthrough true
+  allow-cmd true
+)
+
+(defalias
+  ;; Layer toggles
+  lsp (tap-hold-next-release 200 space (layer-toggle alt_layer))
+  swb (layer-toggle switch-base)
+
+  ;; Layer switches
+  col (layer-switch colemak)
+  qwe (layer-switch qwerty)
+
+  ;; Qwerty home row mods
+  mta (tap-hold-next-release 200 a lmet)
+  ats (tap-hold-next-release 200 s lalt)
+  std (tap-hold-next-release 200 d lsft)
+  ctf (tap-hold-next-release 200 f lctl)
+
+  ctj (tap-hold-next-release 200 j rctl)
+  stk (tap-hold-next-release 200 k rsft)
+  atl (tap-hold-next-release 200 l lalt)
+  mt; (tap-hold-next-release 200 ; rmet)
+
+  ;; Colemak home row mods
+  atr (tap-hold-next-release 200 r lalt)
+  sts (tap-hold-next-release 200 s lsft)
+  ctt (tap-hold-next-release 200 t lctl)
+
+  ctn (tap-hold-next-release 200 n rctl)
+  ste (tap-hold-next-release 200 e rsft)
+  ati (tap-hold-next-release 200 i lalt)
+  mto (tap-hold-next-release 200 o rmet)
+  
+  ;; Alt layer home row mods
+  mt- (tap-hold-next-release 200 - lmet)
+  at4 (tap-hold-next-release 200 4 lalt)
+  st5 (tap-hold-next-release 200 5 lsft)
+  ct6 (tap-hold-next-release 200 6 lctl)
+
+  cdn (tap-hold-next-release 200 down rctl)
+  sup (tap-hold-next-release 200 up rsft)
+  art (tap-hold-next-release 200 right lalt)
+
+  ;; Mod-Button aliases
+  atb (around lalt tab)
+)
+
+(defsrc
+  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
+  caps a    s    d    f    g    h    j    k    l    ;    '    ret
+  lsft z    x    c    v    b    n    m    ,    .    /    rsft
+  lctl lmet lalt           spc            ralt cmp  rctl     
+)
+
+(deflayer qwerty
+  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
+  esc  @mta @ats @std @ctf g    h    @ctj @stk @atl @mt; '    ret
+  lsft z    x    c    v    b    n    m    ,    .    /    rsft
+  lctl lmet lalt           @lsp           ralt cmp  rctl     
+)
+
+(deflayer colemak
+  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  tab  q    w    f    p    g    j    l    u    y    ;    [    ]    \
+  esc  @mta @atr @sts @ctt d    h    @ctn @ste @ati @mto '    ret
+  lsft z    x    c    v    b    k    m    ,    .    /    rsft
+  lctl lmet lalt           @lsp           ralt cmp  rctl     
+)
+
+(deflayer alt_layer
+  XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX  
+  XX   \    7    8    9    0    `    tab  esc  bspc ret  XX   XX   XX
+  XX   @mt- @at4 @st5 @ct6 [    left @cdn @sup @art lmet XX   XX 
+  XX   =    1    2    3    ]    home pgdn pgup end  '    @swb
+  XX   XX   XX             XX             XX   XX   XX       
+)
+
+(deflayer switch-base
+  XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX  
+  XX   @qwe XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX
+  XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX 
+  XX   XX   XX   @col XX   XX   XX   XX   XX   XX   XX   XX  
+  XX   XX   XX             XX             XX   XX   XX       
+)
+ 
+;; (deflayer blocked
+;;   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX  
+;;   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX
+;;   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX 
+;;   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX  
+;;   XX   XX   XX             XX             XX   XX   XX       
+;; )
