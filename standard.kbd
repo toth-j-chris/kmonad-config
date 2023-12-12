@@ -1,6 +1,11 @@
 (defcfg
-  input (iokit-name)
-  output (kext)
+  ;; windows input
+  ;; input (iokit-name)
+  ;; output (kext)
+
+  ;; mac input
+  ;; input (low-level-hook)
+  ;; output (send-event-sink)
 
   fallthrough true
   allow-cmd true
@@ -45,9 +50,6 @@
   cdn (tap-hold-next-release 200 down rctl)
   sup (tap-hold-next-release 200 up rsft)
   art (tap-hold-next-release 200 right lalt)
-
-  ;; Mod-Button aliases
-  atb (around lalt tab)
 )
 
 (defsrc
