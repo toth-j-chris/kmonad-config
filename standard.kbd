@@ -4,8 +4,8 @@
   ;; output (kext)
 
   ;; windows input
-  ;; input (low-level-hook)
-  ;; output (send-event-sink)
+  input (low-level-hook)
+  output (send-event-sink)
 
   fallthrough true
   allow-cmd true
@@ -42,14 +42,15 @@
   mto (tap-hold-next-release 200 o rmet)
   
   ;; Alt layer home row mods
-  mt- (tap-hold-next-release 200 - lmet)
-  at4 (tap-hold-next-release 200 4 lalt)
-  st5 (tap-hold-next-release 200 5 lsft)
-  ct6 (tap-hold-next-release 200 6 lctl)
+  mt1 (tap-hold-next-release 200 1 lmet)
+  at2 (tap-hold-next-release 200 2 lalt)
+  st3 (tap-hold-next-release 200 3 lsft)
+  ct4 (tap-hold-next-release 200 4 lctl)
 
-  cdn (tap-hold-next-release 200 down rctl)
-  sup (tap-hold-next-release 200 up rsft)
-  art (tap-hold-next-release 200 right lalt)
+  mt0 (tap-hold-next-release 200 0 lmet)
+  at9 (tap-hold-next-release 200 9 rctl)
+  st8 (tap-hold-next-release 200 8 rsft)
+  ct7 (tap-hold-next-release 200 7 lalt)
 )
 
 (defsrc
@@ -78,9 +79,9 @@
 
 (deflayer alt_layer
   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX  
-  XX   \    7    8    9    0    `    tab  esc  bspc ret  XX   XX   XX
-  XX   @mt- @at4 @st5 @ct6 [    left @cdn @sup @art lmet XX   XX 
-  XX   =    1    2    3    ]    home pgdn pgup end  '    @swb
+  XX   `    tab  bspc esc  ret  XX   -    =    [    ]    XX   XX   XX
+  XX   @mt1 @at2 @st3 @ct4 5    6    @ct7 @st8 @at9 @mt0 XX   XX 
+  XX   left down up   rght XX   XX   '    \    XX   XX   @swb
   XX   XX   XX             XX             XX   XX   XX       
 )
 
