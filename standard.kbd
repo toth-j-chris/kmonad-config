@@ -1,9 +1,9 @@
 (defcfg
-  ;; windows input
+  ;; mac input
   ;; input (iokit-name)
   ;; output (kext)
 
-  ;; mac input
+  ;; windows input
   ;; input (low-level-hook)
   ;; output (send-event-sink)
 
