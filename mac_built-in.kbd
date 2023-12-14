@@ -1,0 +1,111 @@
+(defcfg
+  ;; mac input
+  input (iokit-name)
+  output (kext)
+
+  ;; windows input
+  ;; input (low-level-hook)
+  ;; output (send-event-sink)
+
+  fallthrough true
+  allow-cmd true
+)
+
+(defalias
+  ;; Layer toggles
+  lsp (tap-hold-next-release 200 space (layer-toggle symbols))
+  swb (layer-toggle switch-base)
+  nav (layer-toggle navigation)
+
+  ;; Layer switches
+  col (layer-switch colemak)
+  qwe (layer-switch qwerty)
+
+  ;; Qwerty home row mods
+  mta (tap-hold-next-release 200 a lmet)
+  ats (tap-hold-next-release 200 s lalt)
+  std (tap-hold-next-release 200 d lsft)
+  ctf (tap-hold-next-release 200 f lctl)
+
+  ctj (tap-hold-next-release 200 j rctl)
+  stk (tap-hold-next-release 200 k rsft)
+  atl (tap-hold-next-release 200 l lalt)
+  mt; (tap-hold-next-release 200 ; rmet)
+
+  ;; Colemak home row mods
+  atr (tap-hold-next-release 200 r lalt)
+  sts (tap-hold-next-release 200 s lsft)
+  ctt (tap-hold-next-release 200 t lctl)
+
+  ctn (tap-hold-next-release 200 n rctl)
+  ste (tap-hold-next-release 200 e rsft)
+  ati (tap-hold-next-release 200 i lalt)
+  mto (tap-hold-next-release 200 o rmet)
+  
+  ;; Alt layer home row mods
+  mt1 (tap-hold-next-release 200 1 lmet)
+  at2 (tap-hold-next-release 200 2 lalt)
+  st3 (tap-hold-next-release 200 3 lsft)
+  ct4 (tap-hold-next-release 200 4 lctl)
+
+  mt0 (tap-hold-next-release 200 0 lmet)
+  at9 (tap-hold-next-release 200 9 rctl)
+  st8 (tap-hold-next-release 200 8 rsft)
+  ct7 (tap-hold-next-release 200 7 lalt)
+)
+
+(defsrc
+  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
+  caps a    s    d    f    g    h    j    k    l    ;    '    ret
+  lsft z    x    c    v    b    n    m    ,    .    /    rsft
+  lctl lalt lmet           spc            ralt cmp  rctl     
+)
+
+(deflayer qwerty
+  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
+  esc  @mta @ats @std @ctf g    h    @ctj @stk @atl @mt; '    ret
+  lsft z    x    c    v    b    n    m    ,    .    /    rsft
+  lctl lmet @nav           @lsp           ralt cmp  rctl     
+)
+
+(deflayer colemak
+  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  tab  q    w    f    p    g    j    l    u    y    ;    [    ]    \
+  esc  @mta @atr @sts @ctt d    h    @ctn @ste @ati @mto '    ret
+  lsft z    x    c    v    b    k    m    ,    .    /    rsft
+  lctl lmet @nav           @lsp           ralt cmp  rctl     
+)
+
+(deflayer symbols
+  XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX  
+  XX   `    tab  bspc esc  XX   XX   -    =    [    ]    XX   XX   XX
+  XX   @mt1 @at2 @st3 @ct4 5    6    @ct7 @st8 @at9 @mt0 XX   XX 
+  XX   XX   XX   XX   ret  XX   XX   '    \    XX   XX   @swb
+  XX   XX   XX             XX             XX   XX   XX       
+)
+
+(deflayer navigation
+  XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX  
+  XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX
+  XX   XX   mute vold volu XX   left down up   rght XX   XX   XX 
+  XX   XX   XX   XX   XX   XX   home pgdn pgup end  XX   XX  
+  XX   XX   XX             XX             XX   XX   XX       
+)
+
+(deflayer switch-base
+  XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX  
+  XX   @qwe XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX
+  XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX 
+  XX   XX   XX   @col XX   XX   XX   XX   XX   XX   XX   XX  
+  XX   XX   XX             XX             XX   XX   XX       
+)
+ 
+;; (deflayer blocked
+;;   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX  
+;;   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX
+;;   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX 
+;;   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX  
+;;   XX   XX   XX             XX             XX   XX   XX       
+;; )
