@@ -1,11 +1,11 @@
 (defcfg
   ;; mac input
-  ;; input (iokit-name)
-  ;; output (kext)
+  input (iokit-name)
+  output (kext)
 
   ;; windows input
-  input (low-level-hook)
-  output (send-event-sink)
+  ;; input (low-level-hook)
+  ;; output (send-event-sink)
 
   fallthrough true
   allow-cmd true
@@ -13,8 +13,9 @@
 
 (defalias
   ;; Layer toggles
-  lsp (tap-hold-next-release 200 space (layer-toggle alt_layer))
+  lsp (tap-hold-next-release 200 space (layer-toggle symbols))
   swb (layer-toggle switch-base)
+  nav (layer-toggle navigation)
 
   ;; Layer switches
   col (layer-switch colemak)
@@ -66,7 +67,7 @@
   tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
   esc  @mta @ats @std @ctf g    h    @ctj @stk @atl @mt; '    ret
   lsft z    x    c    v    b    n    m    ,    .    /    rsft
-  lctl lmet lalt           @lsp           ralt cmp  rctl     
+  lctl lmet @nav           @lsp           ralt cmp  rctl     
 )
 
 (deflayer colemak
@@ -74,14 +75,22 @@
   tab  q    w    f    p    g    j    l    u    y    ;    [    ]    \
   esc  @mta @atr @sts @ctt d    h    @ctn @ste @ati @mto '    ret
   lsft z    x    c    v    b    k    m    ,    .    /    rsft
-  lctl lmet lalt           @lsp           ralt cmp  rctl     
+  lctl lmet @nav           @lsp           ralt cmp  rctl     
 )
 
-(deflayer alt_layer
+(deflayer symbols
   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX  
-  XX   `    tab  bspc esc  ret  XX   -    =    [    ]    XX   XX   XX
+  XX   `    tab  bspc esc  XX   XX   -    =    [    ]    XX   XX   XX
   XX   @mt1 @at2 @st3 @ct4 5    6    @ct7 @st8 @at9 @mt0 XX   XX 
-  XX   left down up   rght XX   XX   '    \    XX   XX   @swb
+  XX   XX   XX   XX   ret  XX   XX   '    \    XX   XX   @swb
+  XX   XX   XX             XX             XX   XX   XX       
+)
+
+(deflayer navigation
+  XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX  
+  XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX
+  XX   XX   mute vold volu XX   left down up   rght XX   XX   XX 
+  XX   XX   XX   XX   XX   XX   home pgdn pgup end  XX   XX  
   XX   XX   XX             XX             XX   XX   XX       
 )
 
